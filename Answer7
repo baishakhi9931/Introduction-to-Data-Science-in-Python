@@ -1,0 +1,19 @@
+def answer_seven():
+    result = census_df.copy()
+    result = result.reset_index()
+    result = result[result['SUMLEV'] == 50]
+    cols_to_use = ['POPESTIMATE2010', 
+                   'POPESTIMATE2011',
+                   'POPESTIMATE2012',
+                   'POPESTIMATE2013',
+                   'POPESTIMATE2014',
+                   'POPESTIMATE2015']
+    result['MinPop'] = result.loc[:, cols_to_use].min(axis=1)
+    result['MaxPop'] = result.loc[:, cols_to_use].max(axis=1)
+    result['PopDelta'] = result['MaxPop'] - result['MinPop']
+    columns_to_keep = ['CTYNAME', 'PopDelta']
+    result = result[columns_to_keep].sort_values('PopDelta', ascending=False).reset_index()
+    result = result['CTYNAME'].loc[0]
+    return result
+
+answer_seven()
