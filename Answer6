@@ -1,0 +1,13 @@
+def answer_six():
+    result = census_df.copy()
+    result = result.reset_index()
+    result = result[result['SUMLEV'] == 50]
+    columns_to_keep = ['STNAME', 'CENSUS2010POP']
+    result = result[columns_to_keep]
+    result = result.sort_values(['STNAME','CENSUS2010POP'], ascending=False)
+    result = result.groupby('STNAME').head(3)
+    result = result.groupby("STNAME").sum().sort_values('CENSUS2010POP', ascending=False).reset_index()
+    result = list(result['STNAME'].loc[:2])
+    return result
+
+answer_six()
