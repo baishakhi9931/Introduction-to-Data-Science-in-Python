@@ -1,0 +1,5 @@
+def answer_three():
+    df_gold=df[(df['Gold']>0)&(df['Gold.1']>0)]
+    df_diff=(abs(df_gold['Gold']-df_gold['Gold.1'])/df_gold['Gold.2'])
+    return df_diff.idxmax()
+answer_three(
