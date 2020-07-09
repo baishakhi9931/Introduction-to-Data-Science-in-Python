@@ -1,0 +1,4 @@
+def answer_four():
+    Points = pd.Series((df['Gold.2']*3) + (df['Silver.2']*2) + (df['Bronze.2']*1))
+    return Points
+answer_four()
