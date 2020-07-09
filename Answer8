@@ -1,0 +1,6 @@
+def answer_eight():
+    coun=census_df[census_df['SUMLEV']==50]
+    ans=coun[((coun['REGION']==1)|(coun['REGION']==2))&(coun['CTYNAME']=='Washington County')& (coun['POPESTIMATE2015']>coun['POPESTIMATE2014'])][['STNAME','CTYNAME']]
+    return ans
+
+answer_eight()
